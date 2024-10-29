@@ -1,49 +1,62 @@
 const express = require('express');
 const path = require('path');
+const { MongoClient } = require('mongodb');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Serve static files from the public directory
+// Middleware to parse JSON bodies
+app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Default route to serve the main HTML file
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'index.html'));
-});
-
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-});
-
-const { MongoClient } = require('mongodb');
-
-const uri = "mongodb+srv://tomasfss004:<db_password>@cluster0.8p3wk.mongodb.net/"
+// MongoDB connection URI - Replace <db_password> and <dbname> with your details
+const uri = "mongodb+srv://tomasfss004:ONX9s3pMPNzXEc95@cluster0.8p3wk.mongodb.net/MotoclubDB?retryWrites=true&w=majority";
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 
 async function connectToDatabase() {
     try {
         await client.connect();
         console.log('Connected to MongoDB');
-        const database = client.db('<dbname>'); // Specify your database name
-        return database;
+        return client.db('MotoclubDB'); // Replace 'myDatabase' with the database name you set up in MongoDB Atlas
     } catch (error) {
         console.error('Error connecting to MongoDB:', error);
+        throw error;
     }
 }
 
-async function saveTotal(name, date, total) {
-    const database = await connectToDatabase();
-    const collection = database.collection('totals'); // Specify your collection name
+app.post('/save', async (req, res) => {
+    const { name, total } = req.body;
+    const date = new Date();
 
-    const record = {
-        name: name,
-        date: date,
-        total: total,
-    };
+    if (!name || total == null) {
+        return res.status(400).send('Name and total are required');
+    }
 
-    const result = await collection.insertOne(record);
-    console.log(`New record created with the following id: ${result.insertedId}`);
-}
+    try {
+        const database = await connectToDatabase();
+        const collection = database.collection('totals');
 
-// Call the saveTotal function where needed in your application
+        const record = {
+            name: name,
+            date: date,
+            total: total,
+        };
+
+        const result = await collection.insertOne(record);
+        console.log(`New record created with the following id: ${result.insertedId}`);
+        res.status(201).send({ message: 'Data saved successfully', id: result.insertedId });
+    } catch (error) {
+        console.error('Error saving data:', error);
+        res.status(500).send('Error saving data. Check server logs for details.');
+    }
+});
+
+// Default route to serve the main HTML file
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
+
+// Start the server
+app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
+});
