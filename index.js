@@ -18,7 +18,7 @@ app.listen(PORT, () => {
 
 const { MongoClient } = require('mongodb');
 
-const uri = process.env.MONGODB_URI; // Get connection string from environment variable
+const uri = "mongodb+srv://tomasfss004:<db_password>@cluster0.8p3wk.mongodb.net/"
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 
 async function connectToDatabase() {
