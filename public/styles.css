@@ -5,9 +5,13 @@
   box-sizing: border-box;
 }
 
+/* Body styling */
 body {
-  font-family: Arial, sans-serif;
-  background-color: #f4f4f9;
+  font-family: 'Arial', sans-serif;
+  background-image: url('img/background.jpg'); /* Replace with your image path */
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
   color: #333;
   display: flex;
   flex-direction: column;
@@ -15,27 +19,102 @@ body {
   padding: 20px;
 }
 
-h1 {
-  font-size: 2.5em;
+/* Header styling */
+header {
+  width: 100%;
+  max-width: 1300px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  background: linear-gradient(145deg, #333, #555, #333); /* Gradient for a sleek look */
+  color: #fff;
   margin-bottom: 20px;
-  color: #333;
+  border-radius: 12px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
 }
 
+/* Logo styling */
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo img {
+  width: 75px;
+  height: 75px;
+  margin-right: 15px;
+  border-radius: 50%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow for logo image */
+}
+
+.logo h1 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2.5em;
+  text-shadow: 
+    -2px -2px 0 #000,   /* Ajustes para bordas esquerda e superior */
+     2px -2px 0 #000,   /* Ajustes para bordas direita e superior */
+    -2px  2px 0 #000,   /* Ajustes para bordas esquerda e inferior */
+     2px  2px 0 #000;   /* Ajustes para bordas direita e inferior */
+  font-weight: bold;
+  color: #dbdbdb;
+  letter-spacing: 2.5px;
+}
+
+/* Navigation menu styling */
+nav .menu {
+  display: flex;
+  list-style: none;
+  gap: 25px;
+}
+
+nav .menu li {
+  font-size: 1.1em;
+}
+
+nav .menu li a {
+  color: #ffffff;
+  text-decoration: none;
+  padding: 8px 16px;
+  border-radius: 5px;
+  font-weight: 600;
+  background-color: rgba(255, 166, 0); /* Subtle background */
+  transition: background-color 0.3s, color 0.3s, transform 0.2s;
+}
+
+nav .menu li a:hover {
+  background-color: rgba(53, 166, 194, 0.9);
+  color: #fff;
+}
+
+h1 {
+  font-size: 2.8em;
+  color: #000000;
+}
+
+/* Menu Section */
 .menu-section {
   width: 100%;
   max-width: 500px;
-  background: #fff;
-  border-radius: 8px;
-  padding: 20px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background: rgb(228, 228, 228, 0.85); /* Semi-transparent white */
+  border-radius: 10px;
+  padding: 25px;
+  box-shadow: 0 6px 12px rgba(53, 166, 194, 0.9);
   margin-bottom: 20px;
 }
 
 .menu-section h2 {
-  font-size: 1.5em;
+  font-size: 1.6em;
   margin-bottom: 15px;
-  color: #007bff;
-  border-bottom: 2px solid #007bff;
+  color: rgb(255, 166, 0);
+  text-shadow: 
+    -1px -1px 0 #000,   /* Ajustes para bordas esquerda e superior */
+     1px -1px 0 #000,   /* Ajustes para bordas direita e superior */
+    -1px  1px 0 #000,   /* Ajustes para bordas esquerda e inferior */
+     1px  1px 0 #000;   /* Ajustes para bordas direita e inferior */
+  letter-spacing: 0.8px;
+  border-bottom: 2px solid rgba(255, 166, 0);
   padding-bottom: 5px;
 }
 
@@ -45,7 +124,7 @@ h1 {
   justify-content: space-between;
   margin: 10px 0;
   font-size: 1.1em;
-  color: #555;
+  color: #000000;
 }
 
 .item2 {
@@ -53,7 +132,7 @@ h1 {
   align-items: center;
   justify-content: space-between;
   font-size: 1.1em;
-  color: #555;
+  color: #000000;
 }
 
 .item label {
@@ -69,50 +148,51 @@ h1 {
   margin-left: 10px;
 }
 
+/* Button styling */
 button {
-  background-color: #007bff;
+  background-color: rgba(255, 166, 0);
   color: #fff;
   border: none;
-  padding: 8px 12px;
-  border-radius: 5px;
+  padding: 10px 15px;
+  border-radius: 8px;
   cursor: pointer;
   font-size: 1em;
-  transition: background-color 0.3s;
+  font-weight: bold;
+  transition: background-color 0.3s, transform 0.2s;
 }
 
 button:hover {
-  background-color: #0056b3;
+  background-color: rgba(255, 166, 0);
+  transform: scale(1.025);
 }
 
-button:disabled {
-  background-color: #ccc;
-  cursor: not-allowed;
+button:active {
+  transform: scale(0.975);
 }
 
-button:focus {
-  outline: 2px solid #0056b3;
-}
-
+/* Total Section */
 #total p {
-  font-size: 1.2em;
+  font-size: 1.3em;
   margin-bottom: 10px;
   color: #333;
 }
 
 #totalPrice {
   font-weight: bold;
-  color: #28a745;
+  color: #478d92;
 }
 
 input[type="text"] {
-  width: calc(100% - 15px);
+  width: calc(100% - 20px);
   padding: 8px;
   font-size: 1em;
   border: 1px solid #ddd;
-  border-radius: 5px;
+  border-radius: 8px;
   margin-top: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
+/* Button alignment */
 #modifications button {
   width: calc(25% - 5px);
 }
@@ -122,11 +202,11 @@ input[type="text"] {
 }
 
 button:last-child {
-  background-color: #28a745;
+  background-color: #478d92;
 }
 
 button:last-child:hover {
-  background-color: #218838;
+  background-color: #478d92;
 }
 
 #currentDate {
@@ -135,6 +215,7 @@ button:last-child:hover {
   margin-left: 5px;
 }
 
+/* Utility styles */
 .total-buttons {
   display: flex;
   gap: 10px;
@@ -147,10 +228,61 @@ span {
 }
 
 #modifications button {
-  background-color: #007bff;
+  background-color: rgba(255, 166, 0);
   color: #333;
 }
 
 #modifications button:hover {
-  background-color: #007bff;
+  background-color: rgba(53, 166, 194, 0.9);
 }
+
+.menu-section-container {
+  display: flex;
+  flex-wrap: wrap; /* Permite que as seções quebrem a linha quando ultrapassarem o limite de largura */
+  gap: 20px;
+  justify-content: center; /* Centraliza as seções horizontalmente */
+}
+
+/* Container de visualização da moto */
+.bike-display {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  margin-bottom: 20px;
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 900px;
+}
+
+/* Imagem da moto */
+.bike-image {
+  width: 150px;
+  height: auto;
+  margin-right: 20px;
+  border-radius: 5px;
+}
+
+/* Informações da moto */
+.bike-info {
+  flex-grow: 1;
+  color: #333;
+  font-family: 'Roboto Condensed', sans-serif;
+}
+
+.bike-info h2 {
+  font-size: 1.5em;
+  color: rgba(255, 166, 0);
+  margin-bottom: 5px;
+}
+
+.bike-info p {
+  font-size: 1em;
+  margin: 5px 0;
+}
+
+.bike-info span {
+  font-weight: bold;
+}
+

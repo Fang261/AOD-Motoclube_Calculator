@@ -94,3 +94,15 @@ function saveTotal() {
   }
 }
 
+document.addEventListener("DOMContentLoaded", function () {
+  const bikes = document.querySelectorAll(".bike-display");
+
+  bikes.forEach(bike => {
+    const blipPrice = parseFloat(bike.querySelector(".blip-price").textContent);
+    const taxPrice = blipPrice * 0.16; // Calcula 16% de imposto
+    const totalPrice = blipPrice + taxPrice; // Soma preço e imposto
+
+    bike.querySelector(".tax-price").textContent = taxPrice.toFixed(2);
+    bike.querySelector(".total-price").textContent = totalPrice.toFixed(2);
+  });
+});
