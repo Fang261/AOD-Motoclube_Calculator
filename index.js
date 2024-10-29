@@ -12,19 +12,14 @@ app.use(express.static(path.join(__dirname, 'public')));
 // MongoDB connection URI - Replace <db_password> and <dbname> with your details
 const uri = "mongodb+srv://tomasfss004:J9Y5Z6KibdqCAUa@cluster0.8p3wk.mongodb.net/MotoclubDB?retryWrites=true&w=majority";
 
-const client = new MongoClient(uri, { 
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-  tls: true,
-  tlsInsecure: false 
-  
-});
+// Create a new MongoClient instance
+const client = new MongoClient(uri);
 
 async function connectToDatabase() {
     try {
         await client.connect();
         console.log('Connected to MongoDB');
-        return client.db('MotoclubDB'); // Replace 'myDatabase' with the database name you set up in MongoDB Atlas
+        return client.db('MotoclubDB'); // Specify your database name here
     } catch (error) {
         console.error('Error connecting to MongoDB:', error);
         throw error;
@@ -45,7 +40,8 @@ app.post('/save', async (req, res) => {
 
         const record = {
             name: name,
-        
+            date: date,
+            total: total,
         };
 
         const result = await collection.insertOne(record);

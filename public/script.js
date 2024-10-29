@@ -71,26 +71,31 @@ function saveTotal() {
   const total = document.getElementById("totalPrice").innerText;
 
   if (name) {
-    // Send data to the server
-    fetch('/save', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({name}),
-    })
-    .then(response => {
-      if (response.ok) {
-        alert("Saved successfully");
-      } else {
-        alert("Error saving data");
-      }
-    })
-    .catch(error => {
-      console.error("Error:", error);
-    });
+      // Send data to the server
+      fetch('https://calculator-for-modifications.onrender.com/save', { // Use full URL for deployment
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ name, date, total }),
+      })
+      .then(response => {
+          if (response.ok) {
+              return response.json(); // Parse the response as JSON
+          }
+          throw new Error('Network response was not ok: ' + response.statusText);
+      })
+      .then(data => {
+          console.log("Data saved successfully:", data);
+          alert("Saved successfully!");
+      })
+      .catch(error => {
+          console.error("Error:", error);
+          alert("Error saving data: " + error.message);
+      });
   } else {
-    alert("Please fill in the Motar name.");
+      alert("Please fill in the Motar name.");
   }
 }
+
 
