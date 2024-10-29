@@ -12,7 +12,13 @@ app.use(express.static(path.join(__dirname, 'public')));
 // MongoDB connection URI - Replace <db_password> and <dbname> with your details
 const uri = "mongodb+srv://tomasfss004:J9Y5Z6KibdqCAUa@cluster0.8p3wk.mongodb.net/MotoclubDB?retryWrites=true&w=majority";
 
-const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+const client = new MongoClient(uri, { 
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  tls: true,
+  tlsInsecure: false 
+  
+});
 
 async function connectToDatabase() {
     try {
