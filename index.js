@@ -36,7 +36,7 @@ app.post('/save', async (req, res) => {
 
     try {
         const database = await connectToDatabase();
-        const collection = database.collection('totals');
+        const collection = database.collection('MotoclubCollection'); // Specify your collection name here
 
         const record = {
             name: name,
