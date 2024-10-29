@@ -45,8 +45,7 @@ app.post('/save', async (req, res) => {
 
         const record = {
             name: name,
-            date: date,
-            total: total,
+        
         };
 
         const result = await collection.insertOne(record);

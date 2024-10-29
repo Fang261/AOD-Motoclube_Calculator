@@ -77,7 +77,7 @@ function saveTotal() {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ name, date, total }),
+      body: JSON.stringify({name}),
     })
     .then(response => {
       if (response.ok) {
