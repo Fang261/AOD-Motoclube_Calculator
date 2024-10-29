@@ -69,9 +69,28 @@ function saveTotal() {
   const name = document.getElementById("motarName").value;
   const date = document.getElementById("currentDate").innerText;
   const total = document.getElementById("totalPrice").innerText;
+
   if (name) {
-    alert(`Saved: Motar ${name}, Date: ${date}, Total: ${total}`);
+    // Send data to the server
+    fetch('/save', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ name, date, total }),
+    })
+    .then(response => {
+      if (response.ok) {
+        alert("Saved successfully");
+      } else {
+        alert("Error saving data");
+      }
+    })
+    .catch(error => {
+      console.error("Error:", error);
+    });
   } else {
     alert("Please fill in the Motar name.");
   }
 }
+
