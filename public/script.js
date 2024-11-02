@@ -14,16 +14,54 @@ function updateItem(item, price, change) {
 
   // Update the display for the current count of 'Chapas'
   document.getElementById(item).innerText = modifications[item];
-  
+
   calculateTotal();
 }
+
+function updateFullTune(item, value) {
+  switch (value) {
+    case "none":
+      modifications[item] = 0;
+      calculateTotal();
+      break;
+    case "A":
+      modifications[item] = 45000;
+      calculateTotal();
+      break;
+    case "B":
+      modifications[item] = 75000;
+      calculateTotal();
+      break;
+    case "C":
+      modifications[item] = 105000;
+      calculateTotal();
+      break;
+    case "D":
+      modifications[item] = 135000;
+      calculateTotal();
+      break;
+    case "E":
+      modifications[item] = 165000;
+      calculateTotal();
+      break;
+    case "F":
+      modifications[item] = 200000;
+      calculateTotal();
+      break;
+    default:
+      alert("Invalid class selected");
+      return;
+  }
+
+}
+
 
 function updateCheckboxItem(checkbox, item) {
   // Set item price if checked, remove if unchecked
   if (checkbox.checked) {
-    modifications[item] = parseFloat(checkbox.value); 
+      modifications[item] = parseFloat(checkbox.value);
   } else {
-    delete modifications[item]; 
+    delete modifications[item];
   }
   calculateTotal();
 }
@@ -43,6 +81,7 @@ function calculateTotal() {
   // Apply multipliers
   let finalMultiplier = multipliers.reduce((acc, curr) => acc * curr, 1);
   document.getElementById("totalPrice").innerText = (baseTotal * finalMultiplier).toFixed(2);
+  document.getElementById("totalPriceIVA").innerText = (document.getElementById("totalPrice").innerText * 1.16).toFixed(2);
 }
 
 function updateMultiplier(checkbox) {
@@ -61,7 +100,9 @@ function clearAll() {
   document.querySelectorAll("#modifications .item span").forEach(span => span.innerText = 0);
   document.querySelectorAll("#modifications input[type='checkbox']").forEach(checkbox => checkbox.checked = false);
   document.querySelectorAll("#multipliers input[type='checkbox']").forEach(checkbox => checkbox.checked = false);
+  document.getElementById("motoClass").value = "none";
   document.getElementById("totalPrice").innerText = 0;
+  document.getElementById("totalPriceIVA").innerText = 0;
   document.getElementById("motarName").value = '';
 }
 
@@ -79,16 +120,16 @@ function saveTotal() {
       },
       body: JSON.stringify({ name, date, total }),
     })
-    .then(response => {
-      if (response.ok) {
-        alert("Saved successfully");
-      } else {
-        alert("Error saving data");
-      }
-    })
-    .catch(error => {
-      console.error("Error:", error);
-    });
+      .then(response => {
+        if (response.ok) {
+          alert("Saved successfully");
+        } else {
+          alert("Error saving data");
+        }
+      })
+      .catch(error => {
+        console.error("Error:", error);
+      });
   } else {
     alert("Please fill in the Motar name.");
   }

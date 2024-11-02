@@ -99,6 +99,7 @@ h1 {
   max-width: 500px;
   background: rgb(228, 228, 228, 0.85); /* Semi-transparent white */
   border-radius: 10px;
+  font-weight: bold;
   padding: 25px;
   box-shadow: 0 6px 12px rgba(53, 166, 194, 0.9);
   margin-bottom: 20px;
@@ -124,6 +125,7 @@ h1 {
   justify-content: space-between;
   margin: 10px 0;
   font-size: 1.1em;
+  font-weight: bold;
   color: #000000;
 }
 
@@ -132,6 +134,7 @@ h1 {
   align-items: center;
   justify-content: space-between;
   font-size: 1.1em;
+  font-weight: bold;
   color: #000000;
 }
 
@@ -161,12 +164,55 @@ h1 {
   margin-left: 10px;
 }
 
+#motoClass {
+  appearance: none; /* Remove default arrow icon */
+  -webkit-appearance: none; /* For Safari */
+  -moz-appearance: none; /* For Firefox */
+  font-weight: bold;
+  background-color: rgba(255, 166, 0); /* Background color */
+  color: rgb(0, 0, 0); /* Text color */
+  padding: 5px 10px; /* Padding for spacing */
+  font-size: 1em; /* Font size */
+  border: 2px solid rgb(0, 0, 0); /* Border style */
+  border-radius: 8px; /* Rounded corners */
+  width: 250px; /* Width of select box */
+  cursor: pointer; /* Cursor on hover */
+  font-family: 'Roboto', sans-serif; /* Font family */
+  text-align: center; /* Center-align the text */
+}
+
+.select-wrapper {
+  display: flex;
+  justify-content: center; /* Center-align the select element */
+}
+
+/* Add styling for when the select is hovered */
+#motoClass:hover {
+  background-color: #65a2a8;
+  border: 2px solid rgb(0, 0, 0); /* Border style */
+}
+
+/* Optional: Add a dropdown arrow icon */
+#motoClass::after {
+  content: '▼';
+  position: absolute;
+  right: 10px;
+  color: white;
+}
+
+/* For better alignment */
+#motoClass option {
+  color: black; /* Option text color */
+  padding: 10px;
+  background-color: #ffffff; /* Background color of options */
+}
+
 /* Button styling */
 button {
   background-color: rgba(255, 166, 0);
+  border: 2px solid rgb(0, 0, 0); /* Border style */
   color: #fff;
-  border: none;
-  padding: 10px 15px;
+  padding: 6px 11px;
   border-radius: 8px;
   cursor: pointer;
   font-size: 1em;
@@ -176,6 +222,7 @@ button {
 
 button:hover {
   background-color: rgba(255, 166, 0);
+  border: 2px solid rgb(0, 0, 0); /* Border style */
   transform: scale(1.025);
 }
 
@@ -237,16 +284,18 @@ button:last-child:hover {
 
 span {
   font-weight: bold;
-  color: #555;
+  color: #000000;
 }
 
 #modifications button {
   background-color: rgba(255, 166, 0);
+  border: 2px solid rgb(0, 0, 0); /* Border style */
   color: #333;
 }
 
 #modifications button:hover {
-  background-color: rgba(53, 166, 194, 0.9);
+  background-color: #65a2a8;
+  border: 2px solid rgb(0, 0, 0); /* Border style */
 }
 
 .menu-section-container {
