@@ -18,44 +18,53 @@ function updateItem(item, price, change) {
   calculateTotal();
 }
 
-function updateFullTune(item, value) {
-  switch (value) {
-    case "none":
-      modifications[item] = 0;
-      calculateTotal();
-      break;
+function updatePrices(classSelected) {
+  let fullTune, turbo, motor, transmissao;
+
+  clearAll();
+
+  switch (classSelected) {
     case "A":
-      modifications[item] = 45000;
-      calculateTotal();
+      fullTune = 45000;
+      turbo = motor = transmissao = 25000;
       break;
     case "B":
-      modifications[item] = 75000;
-      calculateTotal();
+      fullTune = 75000;
+      turbo = motor = transmissao = 55000;
       break;
     case "C":
-      modifications[item] = 105000;
-      calculateTotal();
+      fullTune = 105000;
+      turbo = motor = transmissao = 85000;
       break;
     case "D":
-      modifications[item] = 135000;
-      calculateTotal();
+      fullTune = 135000;
+      turbo = motor = transmissao = 105000;
       break;
     case "E":
-      modifications[item] = 165000;
-      calculateTotal();
+      fullTune = 165000;
+      turbo = motor = transmissao = 135000;
       break;
     case "F":
-      modifications[item] = 200000;
-      calculateTotal();
+      fullTune = 200000;
+      turbo = motor = transmissao = 150000;
       break;
     default:
-      alert("Invalid class selected");
-      return;
+      fullTune = turbo = motor = transmissao = 0;
+      break;
   }
 
+  // Update prices in HTML
+  document.getElementById("fullTunePrice").innerText = fullTune;
+  document.getElementById("turboPrice").innerText = turbo;
+  document.getElementById("motorPrice").innerText = motor;
+  document.getElementById("transmissaoPrice").innerText = transmissao;
+
+  document.getElementById("fullTuneCheckbox").value = fullTune;
+  document.getElementById("turboCheckbox").value = turbo;
+  document.getElementById("motorCheckbox").value = motor;
+  document.getElementById("transmissaoCheckbox").value = transmissao;
+
 }
-
-
 
 function updateCheckboxItem(checkbox, item) {
   // Set item price if checked, remove if unchecked
@@ -139,47 +148,47 @@ function saveTotal() {
 async function sendTotal() {
   const name = document.getElementById('motarName').value;
   const date = document.getElementById('currentDate').innerText;
-  const total = (document.getElementById('totalPrice').innerText)*1;
+  const total = (document.getElementById('totalPrice').innerText) * 1;
   const IVA = total * 1.15;
   const referenceID = Math.floor(100000 + Math.random() * 900000);
 
   const webhookURL = 'https://discord.com/api/webhooks/1302629863760330804/RFP5Cr10uqr_Ls9jZCF4ZpYuQvUTD4y33Ep7d8vXRJxpqfzK8q1cp7q6m4JXCVHB04uU';
 
   const message = `━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n` +
-                  `**🚨 Angels of Death Modification Report 🚨**\n\n` +
-                  `🔹 **Detalhes do Motar**\n\n` +
-                  `   **Nome**: ${name}\n` +
-                  `   **Data**: ${date}\n\n` +
-                  `🔹 **Total Faturado**\n\n` +
-                  `   **Total sem IVA**: ${total}\n` +
-                  `   **Total com IVA**: ${IVA}\n\n` +
-                  `---\n\n` +
-                  `📌 *ID*: \`#${referenceID}\`\n\n` +
-                  `━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━`;
-  
+    `**🚨 Angels of Death Modification Report 🚨**\n\n` +
+    `🔹 **Detalhes do Motar**\n\n` +
+    `   **Nome**: ${name}\n` +
+    `   **Data**: ${date}\n\n` +
+    `🔹 **Total Faturado**\n\n` +
+    `   **Total sem IVA**: ${total}\n` +
+    `   **Total com IVA**: ${IVA}\n\n` +
+    `---\n\n` +
+    `📌 *ID*: \`#${referenceID}\`\n\n` +
+    `━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━`;
+
   const payload = {
-      content: message
+    content: message
   };
 
   try {
-      const response = await fetch(webhookURL, {
-          method: 'POST',
-          headers: {
-              'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(payload)
-      });
+    const response = await fetch(webhookURL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(payload)
+    });
 
-      if (response.ok) {
-          alert('Message sent successfully to Discord!');
-          // Optionally clear the input fields after sending
-          document.getElementById('motarName').value = '';
-      } else {
-          alert('Failed to send message. Please try again.');
-      }
+    if (response.ok) {
+      alert('Message sent successfully to Discord!');
+      // Optionally clear the input fields after sending
+      document.getElementById('motarName').value = '';
+    } else {
+      alert('Failed to send message. Please try again.');
+    }
   } catch (error) {
-      console.error('Error:', error);
-      alert('An error occurred while sending the message.');
+    console.error('Error:', error);
+    alert('An error occurred while sending the message.');
   }
 }
 
@@ -200,9 +209,9 @@ document.addEventListener("DOMContentLoaded", function () {
 function updateList(criteria) {
   const bikes = Array.from(document.querySelectorAll('.menu-section'));
   bikes.sort((a, b) => {
-      const aValue = a.querySelector(criteria === 'name' ? '.bike-name' : '.classe').innerText;
-      const bValue = b.querySelector(criteria === 'name' ? '.bike-name' : '.classe').innerText;
-      return aValue.localeCompare(bValue, undefined, { numeric: true });
+    const aValue = a.querySelector(criteria === 'name' ? '.bike-name' : '.classe').innerText;
+    const bValue = b.querySelector(criteria === 'name' ? '.bike-name' : '.classe').innerText;
+    return aValue.localeCompare(bValue, undefined, { numeric: true });
   });
   bikes.forEach(bike => document.querySelector('.menu-section-container').appendChild(bike));
 }

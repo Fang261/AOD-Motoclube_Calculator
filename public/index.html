@@ -33,37 +33,44 @@
   <!-- Phase 1: Options for Modifications -->
   <div class="menu-section" id="modifications">
     <h2>Modificações</h2>
+    <br>
+    <div class="select-wrapper">
+      <select id="motoClass" onchange="updatePrices(this.value)" required>
+        <option value="none">Escolher classe</option> 
+        <option value="A">A</option>
+        <option value="B">B</option>
+        <option value="C">C</option>
+        <option value="D">D</option>
+        <option value="E">E</option>
+        <option value="F">F</option>
+      </select>
+    </div>
+    <br>
+    <h2></h2>
     <div class="item">
       Chapas (5000):
       <span id="Chapas">0</span>
       <button onclick="updateItem('Chapas', 5000, 1)">+</button>
       <button onclick="updateItem('Chapas', 5000, -1)">-</button>
     </div>
-    <div class="item">
-      Full Tune:
-      <div class="select-wrapper">
-        <select id="motoClass" onchange="updateFullTune(this, value)" required>
-          <option value="none">Sem Full Tune</option>
-          <option value="A">A</option>
-          <option value="B">B</option>
-          <option value="C">C</option>
-          <option value="D">D</option>
-          <option value="E">E</option>
-          <option value="F">F</option>
-        </select>
-      </div>
-    </div>
     <label class="item">
-      Turbo (40000) <input type="checkbox" value="40000" onchange="updateCheckboxItem(this, 'Turbo')">
+      <p>Full Tune (<span id="fullTunePrice">Escolher classe</span>)</p>
+      <input type="checkbox" id="fullTuneCheckbox" value="" onchange="updateCheckboxItem(this, 'Full Tune')">
     </label>
     <label class="item">
-      Motor (40000) <input type="checkbox" value="40000" onchange="updateCheckboxItem(this, 'Motor')">
+      <p>Turbo (<span id="turboPrice">Escolher classe</span>)</p> 
+      <input type="checkbox" id="turboCheckbox" value="" onchange="updateCheckboxItem(this, 'Turbo')">
     </label>
     <label class="item">
-      Transmissão (40000) <input type="checkbox" value="40000" onchange="updateCheckboxItem(this, 'Transmissão')">
+      <p>Motor (<span id="motorPrice">Escolher classe</span>)</p> 
+      <input type="checkbox" id="motorCheckbox" value="" onchange="updateCheckboxItem(this, 'Motor')">
     </label>
     <label class="item">
-      Armadura (40000) <input type="checkbox" value="40000" onchange="updateCheckboxItem(this, 'Armadura')">
+      <p>Transmissão (<span id="transmissaoPrice">Escolher classe</span>)</p> 
+      <input type="checkbox" id="transmissaoCheckbox" value="" onchange="updateCheckboxItem(this, 'Transmissão')">
+    </label>
+    <label class="item">
+      Armadura (50000) <input type="checkbox" value="50000" onchange="updateCheckboxItem(this, 'Armadura')">
     </label>
     <label class="item">
       Travões (15000) <input type="checkbox" value="15000" onchange="updateCheckboxItem(this, 'Travões')">
@@ -84,7 +91,7 @@
       Xenon (35000) <input type="checkbox" value="35000" onchange="updateCheckboxItem(this, 'Xenon')">
     </label>
     <label class="item">
-      Jantes (7500) <input type="checkbox" value="7500" onchange="updateCheckboxItem(this, 'Jantes')">
+      Jantes (15000) <input type="checkbox" value="15000" onchange="updateCheckboxItem(this, 'Jantes')">
     </label>
     <label class="item">
       Cor das Jantes (5000) <input type="checkbox" value="5000" onchange="updateCheckboxItem(this, 'Cor das Jantes')">
@@ -111,7 +118,6 @@
   <!-- Phase 2: Multiplier Options -->
   <div class="menu-section" id="multipliers">
     <h2>Multiplicadores</h2>
-    <label class="item2"> VIP (+20%) <input type="checkbox" value="1.2" onclick="updateMultiplier(this)"></label><br>
     <label class="item2"> Prospect (-50%) <input type="checkbox" value="0.50"
         onclick="updateMultiplier(this)"></label><br>
     <label class="item2"> Comissão (+10%) <input type="checkbox" value="1.1"
