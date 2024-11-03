@@ -139,12 +139,24 @@ function saveTotal() {
 async function sendTotal() {
   const name = document.getElementById('motarName').value;
   const date = document.getElementById('currentDate').innerText;
-  const total = document.getElementById('totalPrice').innerText;
+  const total = (document.getElementById('totalPrice').innerText)*1;
+  const IVA = total * 1.15;
+  const referenceID = Math.floor(100000 + Math.random() * 900000);
 
-  const webhookURL = 'https://discord.com/api/webhooks/1302465113919586404/hGEsMknz_whn5YbkYXHkcVbeKHgpRLhBIaUYpM-u04d62j6q8PCyj8ec8nPGf7M8RGAX';
+  const webhookURL = 'https://discord.com/api/webhooks/1302629863760330804/RFP5Cr10uqr_Ls9jZCF4ZpYuQvUTD4y33Ep7d8vXRJxpqfzK8q1cp7q6m4JXCVHB04uU';
 
-  const message = `Motar Name: ${name}\nDate: ${date}\nValor Faturado: ${total}`;
-
+  const message = `━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n` +
+                  `**🚨 Angels of Death Modification Report 🚨**\n\n` +
+                  `🔹 **Detalhes do Motar**\n\n` +
+                  `   **Nome**: ${name}\n` +
+                  `   **Data**: ${date}\n\n` +
+                  `🔹 **Total Faturado**\n\n` +
+                  `   **Total sem IVA**: ${total}\n` +
+                  `   **Total com IVA**: ${IVA}\n\n` +
+                  `---\n\n` +
+                  `📌 *ID*: \`#${referenceID}\`\n\n` +
+                  `━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━`;
+  
   const payload = {
       content: message
   };
