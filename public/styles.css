@@ -348,3 +348,71 @@ span {
   font-weight: bold;
 }
 
+/* Estilo do menu de ordenação */
+
+.sorting-menu {
+    display: flex;
+    align-items: center;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 16px;
+    color: #444;
+    margin: 20px 0;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border: 10px;
+    background-color: #f3f3f3;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.sorting-menu label {
+    font-weight: bold;
+    margin-right: 15px;
+}
+
+.sorting-menu p {
+    margin-right: 10px;
+}
+
+.sorting-menu select {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 20px;
+    font-size: 16px;
+    color: #333;
+    background-color: #fff;
+    border: 2px solid #ddd;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.sorting-menu select:hover {
+    border-color: #007bff;
+}
+
+.sorting-menu select:focus {
+    outline: none;
+    border-color: #007bff;
+    background-color: #e6f0ff;
+    box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.2);
+}
+
+.sorting-menu option {
+    color: #333;
+    background-color: #fff;
+}
+
+/* Adding custom arrow styling for select dropdown */
+.sorting-menu select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url('data:image/svg+xml;utf8,<svg fill="%23444" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 2px center;
+    background-size: 14px;
+}

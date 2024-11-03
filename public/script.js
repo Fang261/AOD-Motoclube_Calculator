@@ -56,10 +56,11 @@ function updateFullTune(item, value) {
 }
 
 
+
 function updateCheckboxItem(checkbox, item) {
   // Set item price if checked, remove if unchecked
   if (checkbox.checked) {
-      modifications[item] = parseFloat(checkbox.value);
+    modifications[item] = parseFloat(checkbox.value);
   } else {
     delete modifications[item];
   }
@@ -81,7 +82,7 @@ function calculateTotal() {
   // Apply multipliers
   let finalMultiplier = multipliers.reduce((acc, curr) => acc * curr, 1);
   document.getElementById("totalPrice").innerText = (baseTotal * finalMultiplier).toFixed(2);
-  document.getElementById("totalPriceIVA").innerText = (document.getElementById("totalPrice").innerText * 1.16).toFixed(2);
+  document.getElementById("totalPriceIVA").innerText = (document.getElementById("totalPrice").innerText * 1.15).toFixed(2);
 }
 
 function updateMultiplier(checkbox) {
@@ -147,3 +148,13 @@ document.addEventListener("DOMContentLoaded", function () {
     bike.querySelector(".total-price").textContent = totalPrice.toFixed(2);
   });
 });
+
+function updateList(criteria) {
+  const bikes = Array.from(document.querySelectorAll('.menu-section'));
+  bikes.sort((a, b) => {
+      const aValue = a.querySelector(criteria === 'name' ? '.bike-name' : '.classe').innerText;
+      const bValue = b.querySelector(criteria === 'name' ? '.bike-name' : '.classe').innerText;
+      return aValue.localeCompare(bValue, undefined, { numeric: true });
+  });
+  bikes.forEach(bike => document.querySelector('.menu-section-container').appendChild(bike));
+}
