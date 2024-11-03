@@ -136,6 +136,42 @@ function saveTotal() {
   }
 }
 
+async function sendTotal() {
+  const name = document.getElementById('motarName').value;
+  const date = document.getElementById('currentDate').innerText;
+  const total = document.getElementById('totalPrice').innerText;
+
+  const webhookURL = 'https://discord.com/api/webhooks/1302465113919586404/hGEsMknz_whn5YbkYXHkcVbeKHgpRLhBIaUYpM-u04d62j6q8PCyj8ec8nPGf7M8RGAX';
+
+  const message = `Motar Name: ${name}\nDate: ${date}\nValor Faturado: ${total}`;
+
+  const payload = {
+      content: message
+  };
+
+  try {
+      const response = await fetch(webhookURL, {
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(payload)
+      });
+
+      if (response.ok) {
+          alert('Message sent successfully to Discord!');
+          // Optionally clear the input fields after sending
+          document.getElementById('motarName').value = '';
+      } else {
+          alert('Failed to send message. Please try again.');
+      }
+  } catch (error) {
+      console.error('Error:', error);
+      alert('An error occurred while sending the message.');
+  }
+}
+
+
 document.addEventListener("DOMContentLoaded", function () {
   const bikes = document.querySelectorAll(".bike-display");
 
