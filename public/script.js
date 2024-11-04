@@ -145,26 +145,45 @@ function saveTotal() {
   }
 }
 
+function ifCheck() {
+  if (document.getElementById("prospectCheckBox").checked) {
+    document.getElementById("fullTuneCheckbox").checked = false;
+  }
+
+}
+
 async function sendTotal() {
+  if (document.getElementById("motarName").value === '') {
+    alert("Por favor preencha o nome do Motar.");
+    return;
+  }
+
   const name = document.getElementById('motarName').value;
   const date = document.getElementById('currentDate').innerText;
   const total = (document.getElementById('totalPrice').innerText) * 1;
   const IVA = total * 1.15;
   const referenceID = Math.floor(100000 + Math.random() * 900000);
+  let prospect = document.getElementById("prospectCheckBox").checked ? 'Sim' : 'Não';
+  let comissao = document.getElementById("comissaoCheckBox").checked ? 'Sim' : 'Não';
+  let parceria = document.getElementById("parceriaCheckBox").checked ? 'Sim' : 'Não';
 
   const webhookURL = 'https://discord.com/api/webhooks/1302629863760330804/RFP5Cr10uqr_Ls9jZCF4ZpYuQvUTD4y33Ep7d8vXRJxpqfzK8q1cp7q6m4JXCVHB04uU';
 
   const message = `━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n` +
-    `**🚨 Angels of Death Modification Report 🚨**\n\n` +
-    `🔹 **Detalhes do Motar**\n\n` +
-    `   **Nome**: ${name}\n` +
-    `   **Data**: ${date}\n\n` +
-    `🔹 **Total Faturado**\n\n` +
-    `   **Total sem IVA**: ${total}\n` +
-    `   **Total com IVA**: ${IVA}\n\n` +
-    `---\n\n` +
-    `📌 *ID*: \`#${referenceID}\`\n\n` +
-    `━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━`;
+                  `**🚨 Angels of Death Modification Report 🚨**\n\n` +
+                  `🔹 **Detalhes do Motar**\n\n` +
+                  `   **Nome**: ${name}\n` +
+                  `   **Data**: ${date}\n\n` +
+                  `🔹 **Multiplicadores**\n\n` +
+                  `   **Prospect**: ${prospect}\n` +
+                  `   **Comissão**: ${comissao}\n` +
+                  `   **Parceria**: ${parceria}\n\n` +
+                  `🔹 **Total Faturado**\n\n` +
+                  `   **Total sem IVA**: ${total}\n` +
+                  `   **Total com IVA**: ${IVA}\n\n` +
+                  `---\n\n` +
+                  `📌 *ID*: \`#${referenceID}\`\n\n` +
+                  `━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━`;
 
   const payload = {
     content: message

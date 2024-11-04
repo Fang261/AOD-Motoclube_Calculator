@@ -118,11 +118,11 @@
   <!-- Phase 2: Multiplier Options -->
   <div class="menu-section" id="multipliers">
     <h2>Multiplicadores</h2>
-    <label class="item2"> Prospect (-50%) <input type="checkbox" value="0.50"
+    <label class="item2"> Prospect (-50%) <input id="prospectCheckBox" type="checkbox" value="0.50"
         onclick="updateMultiplier(this)"></label><br>
-    <label class="item2"> Comissão (+10%) <input type="checkbox" value="1.1"
+    <label class="item2"> Comissão (+10%) <input id="comissaoCheckBox" type="checkbox" value="1.1"
         onclick="updateMultiplier(this)"></label><br>
-    <label class="item2"> Parceria (-15%) <input type="checkbox" value="0.85"
+    <label class="item2"> Parceria (-15%) <input id="parceriaCheckBox" type="checkbox" value="0.85"
         onclick="updateMultiplier(this)"></label><br>
   </div>
 
@@ -132,7 +132,7 @@
     <p>Total (Fatura): <span id="totalPrice">0</span></p>
     <p>Total (+IVA): <span id="totalPriceIVA">0</span></p>
     <p>
-      <input type="text" id="motarName" placeholder="Motar Name">
+      <input type="text" id="motarName" placeholder="Motar Name" required>
       <br>
       <br>
       Date: <span id="currentDate"></span>
