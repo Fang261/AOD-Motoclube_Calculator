@@ -209,6 +209,7 @@ async function sendTotal() {
     console.error('Error:', error);
     alert('An error occurred while sending the message.');
   }
+  clearAll();
 }
 
 
