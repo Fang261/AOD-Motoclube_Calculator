@@ -26,27 +26,27 @@ function updatePrices(classSelected) {
   switch (classSelected) {
     case "A":
       fullTune = 45000;
-      turbo = motor = transmissao = 25000;
+      turbo = motor = transmissao = (fullTune*0.4);
       break;
     case "B":
       fullTune = 75000;
-      turbo = motor = transmissao = 55000;
+      turbo = motor = transmissao = (fullTune*0.3);
       break;
     case "C":
       fullTune = 105000;
-      turbo = motor = transmissao = 85000;
+      turbo = motor = transmissao = (fullTune*0.3);
       break;
     case "D":
       fullTune = 135000;
-      turbo = motor = transmissao = 105000;
+      turbo = motor = transmissao = (fullTune*0.3);
       break;
     case "E":
       fullTune = 165000;
-      turbo = motor = transmissao = 135000;
+      turbo = motor = transmissao = (fullTune*0.3);
       break;
     case "F":
       fullTune = 200000;
-      turbo = motor = transmissao = 150000;
+      turbo = motor = transmissao = (fullTune*0.3);
       break;
     default:
       fullTune = turbo = motor = transmissao = 0;
