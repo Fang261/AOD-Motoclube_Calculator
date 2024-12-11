@@ -167,7 +167,7 @@ async function sendTotal() {
   let comissao = document.getElementById("comissaoCheckBox").checked ? 'Sim' : 'Não';
   let parceria = document.getElementById("parceriaCheckBox").checked ? 'Sim' : 'Não';
 
-  const webhookURL = 'https://discord.com/api/webhooks/1302629863760330804/RFP5Cr10uqr_Ls9jZCF4ZpYuQvUTD4y33Ep7d8vXRJxpqfzK8q1cp7q6m4JXCVHB04uU';
+  const webhookURL = 'https://discord.com/api/webhooks/1316193028914024573/sP546faGJQfJ9jeHIRJjGv_cLSo67m2Uq2GGFT_xZdETpXDS26ArwxEGFpVWQoMVpHHE';
 
   const message = `━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n` +
                   `**🚨 Angels of Death Modification Report 🚨**\n\n` +
