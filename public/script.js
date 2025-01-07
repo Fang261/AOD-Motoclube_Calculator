@@ -168,6 +168,8 @@ async function sendTotal() {
   let parceria = document.getElementById("parceriaCheckBox").checked ? 'Sim' : 'Não';
 
   const webhookURL = 'https://discord.com/api/webhooks/1326055203849375824/iywblJtXj_907BM-vM3dG2Lt1vb-ez4oShoUwr3K5-puxA7_J-A_bRVs8ShHOwvKUEOM';
+  const webhookURL2 = 'https://discord.com/api/webhooks/1326053678448115772/t0yOoE3Oy45-rj4aGa2OHHMupehKhMSll5HZppUrUX6O68gbJUrIIoL6j9XnVAjnerxf';
+  const webhookURL3 = 'https://discord.com/api/webhooks/1326058840156012615/W5FadLYRkeP21bpd-Et5leJpaqxl3mSx5orDOzuIwH8kaL82HPkeTN2TXXrve_LqzZgY';
 
   const message = `━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n` +
                   `**🚨 Angels of Death Modification Report 🚨**\n\n` +
@@ -209,6 +211,49 @@ async function sendTotal() {
     console.error('Error:', error);
     alert('An error occurred while sending the message.');
   }
+
+  try {
+    const response = await fetch(webhookURL2, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(payload)
+    });
+
+    if (response.ok) {
+      alert('Message sent successfully to Discord!');
+      // Optionally clear the input fields after sending
+      document.getElementById('motarName').value = '';
+    } else {
+      alert('Failed to send message. Please try again.');
+    }
+  } catch (error) {
+    console.error('Error:', error);
+    alert('An error occurred while sending the message.');
+  }
+
+  try {
+    const response = await fetch(webhookURL3, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(payload)
+    });
+
+    if (response.ok) {
+      alert('Message sent successfully to Discord!');
+      // Optionally clear the input fields after sending
+      document.getElementById('motarName').value = '';
+    } else {
+      alert('Failed to send message. Please try again.');
+    }
+  } catch (error) {
+    console.error('Error:', error);
+    alert('An error occurred while sending the message.');
+  }
+  
   clearAll();
 }
 
