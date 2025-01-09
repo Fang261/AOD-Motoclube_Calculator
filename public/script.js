@@ -167,10 +167,8 @@ async function sendTotal() {
   let comissao = document.getElementById("comissaoCheckBox").checked ? 'Sim' : 'Não';
   let parceria = document.getElementById("parceriaCheckBox").checked ? 'Sim' : 'Não';
 
-  const webhookURL = 'https://discord.com/api/webhooks/1326055203849375824/iywblJtXj_907BM-vM3dG2Lt1vb-ez4oShoUwr3K5-puxA7_J-A_bRVs8ShHOwvKUEOM';
-  const webhookURL2 = 'https://discord.com/api/webhooks/1326053678448115772/t0yOoE3Oy45-rj4aGa2OHHMupehKhMSll5HZppUrUX6O68gbJUrIIoL6j9XnVAjnerxf';
-  const webhookURL3 = 'https://discord.com/api/webhooks/1326058840156012615/W5FadLYRkeP21bpd-Et5leJpaqxl3mSx5orDOzuIwH8kaL82HPkeTN2TXXrve_LqzZgY';
-
+  const webhookURL = 'https://discord.com/api/webhooks/1326954589919907942/bz_RztRnSzwM4LjG6JrfItYd7bFpjDux718xoBBp-ZxZmbgcYaEeLCBYrZTZ3fEoHxRk';
+  
   const message = `━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n` +
                   `**🚨 Angels of Death Modification Report 🚨**\n\n` +
                   `🔹 **Detalhes do Motar**\n\n` +
