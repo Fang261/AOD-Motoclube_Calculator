@@ -210,48 +210,6 @@ async function sendTotal() {
     alert('An error occurred while sending the message.');
   }
 
-  try {
-    const response = await fetch(webhookURL2, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(payload)
-    });
-
-    if (response.ok) {
-      alert('Message sent successfully to Discord!');
-      // Optionally clear the input fields after sending
-      document.getElementById('motarName').value = '';
-    } else {
-      alert('Failed to send message. Please try again.');
-    }
-  } catch (error) {
-    console.error('Error:', error);
-    alert('An error occurred while sending the message.');
-  }
-
-  try {
-    const response = await fetch(webhookURL3, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(payload)
-    });
-
-    if (response.ok) {
-      alert('Message sent successfully to Discord!');
-      // Optionally clear the input fields after sending
-      document.getElementById('motarName').value = '';
-    } else {
-      alert('Failed to send message. Please try again.');
-    }
-  } catch (error) {
-    console.error('Error:', error);
-    alert('An error occurred while sending the message.');
-  }
-  
   clearAll();
 }
 
